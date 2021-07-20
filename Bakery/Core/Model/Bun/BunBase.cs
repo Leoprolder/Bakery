@@ -5,6 +5,8 @@ namespace Bakery.Core.Model.Bun
 {
     public abstract class BunBase
     {
+        public int Id { get; set; }
+
         public decimal OriginalPrice { get; set; }
 
         public decimal CurrentPrice => CalculateCurrentPrice();
