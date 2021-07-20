@@ -14,7 +14,7 @@ namespace Bakery.Core.Model.Bun
         {
             if (DateTime.Now >= TargetSaleTime)
             {
-                return _currentPrice / 2;
+                return OriginalPrice / 2;
             }
 
             int hoursElapsed = (DateTime.Now - SellUntil).Hours;

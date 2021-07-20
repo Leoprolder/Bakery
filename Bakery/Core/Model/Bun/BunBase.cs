@@ -5,21 +5,9 @@ namespace Bakery.Core.Model.Bun
 {
     public abstract class BunBase
     {
-        private decimal _currentPrice;
-
         public decimal OriginalPrice { get; set; }
 
-        public decimal CurrentPrice 
-        {
-            get
-            {
-                return _currentPrice;
-            }
-            set
-            {
-                _currentPrice = CalculateCurrentPrice();
-            }
-        }
+        public decimal CurrentPrice => CalculateCurrentPrice();
 
         public DateTime SellUntil { get; set; }
 
