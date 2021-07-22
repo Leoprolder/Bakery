@@ -9,10 +9,11 @@ namespace Bakery.Core.Data
 {
     public class BunContext : DbContext
     {
-        public DbSet<BunBase> Buns { get; set; }
+        public DbSet<Bun> Buns { get; set; }
 
         public BunContext()
         {
+            Database.EnsureCreated();
         }
 
         public BunContext(DbContextOptions<BunContext> options)

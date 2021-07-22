@@ -20,25 +20,26 @@ namespace Bakery.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<BunBase> Get()
+        public IEnumerable<Bun> Get()
         {
             return _bunService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public BunBase Get(int id)
+        public T Get<T>(int id)
+            where T : Bun
         {
-            return _bunService.Get(id);
+            return _bunService.Get<T>(id);
         }
 
         [HttpPost]
-        public void Create([FromBody]BunBase bun)
+        public void Create([FromBody]Bun bun)
         {
             _bunService.Add(bun);
         }
 
         [HttpPost]
-        public void Update([FromBody]BunBase bun)
+        public void Update([FromBody]Bun bun)
         {
             _bunService.Update(bun);
         }

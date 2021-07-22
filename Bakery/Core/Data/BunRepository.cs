@@ -17,7 +17,7 @@ namespace Bakery.Core.Data
             _bunContext = new BunContext();
         }
 
-        public void CreateBun(BunBase bun)
+        public void CreateBun(Bun bun)
         {
             _bunContext.Buns.Add(bun);
         }
@@ -49,12 +49,13 @@ namespace Bakery.Core.Data
             GC.SuppressFinalize(this);
         }
 
-        public BunBase GetBun(int id)
+        public T GetBun<T>(int id)
+            where T : Bun
         {
-            return _bunContext.Buns.Find(id);
+            return _bunContext.Buns.Find(id) as T;
         }
 
-        public IEnumerable<BunBase> GetBuns()
+        public IEnumerable<Bun> GetBuns()
         {
             return _bunContext.Buns;
         }
@@ -64,7 +65,7 @@ namespace Bakery.Core.Data
             _bunContext.SaveChanges();
         }
 
-        public void Update(BunBase bun)
+        public void Update(Bun bun)
         {
             _bunContext.Entry(bun).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         }

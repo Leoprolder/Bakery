@@ -3,7 +3,7 @@ using System;
 
 namespace Bakery.Core.Model.Bun
 {
-    public class PretzelBun : BunBase
+    public class PretzelBun : Bun
     {
         public PretzelBun(DateTime bakeTime, DateTime sellUntil, DateTime targetSaleTime, decimal price)
             : base(bakeTime, sellUntil, targetSaleTime, price)

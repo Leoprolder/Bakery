@@ -17,6 +17,10 @@ namespace Bakery.Core.Model.Bun
 
         public DateTime BakeTime { get; set; }
 
+        public BunBase()
+        {
+        }
+
         public BunBase(DateTime bakeTime, DateTime sellUntil, DateTime targetSaleTime, decimal price)
         {
             BakeTime = bakeTime;

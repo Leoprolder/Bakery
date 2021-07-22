@@ -1,21 +1,19 @@
 ﻿using Bakery.Core.Model.Bun;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Bakery.Core.Services
 {
     public interface IBunService
     {
-        public void Add(BunBase bun);
+        public void Add(Bun bun);
 
-        public IEnumerable<BunBase> GetAll();
+        public IEnumerable<Bun> GetAll();
 
-        public BunBase Get(int id);
+        public T Get<T>(int id)
+            where T : Bun;
 
         public void Delete(int id);
 
-        public void Update(BunBase bun);
+        public void Update(Bun bun);
     }
 }

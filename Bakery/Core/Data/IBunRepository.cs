@@ -1,20 +1,19 @@
 ﻿using Bakery.Core.Model.Bun;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Bakery.Core.Data
 {
     public interface IBunRepository : IDisposable
     {
-        IEnumerable<BunBase> GetBuns();
+        IEnumerable<Bun> GetBuns();
 
-        BunBase GetBun(int id);
+        T GetBun<T>(int id) 
+            where T : Bun;
 
-        void CreateBun(BunBase bun);
+        void CreateBun(Bun bun);
 
-        void Update(BunBase bun);
+        void Update(Bun bun);
 
         void Delete(int id);
 

@@ -17,23 +17,24 @@ namespace Bakery.Core.Services
             _bunRepository = bunRepository;
         }
 
-        public void Add(BunBase bun)
+        public void Add(Bun bun)
         {
             _bunRepository.CreateBun(bun);
             _bunRepository.Save();
         }
 
-        public IEnumerable<BunBase> GetAll()
+        public IEnumerable<Bun> GetAll()
         {
             return _bunRepository.GetBuns();
         }
 
-        public BunBase Get(int id)
+        public T Get<T>(int id)
+            where T : Bun
         {
-            return _bunRepository.GetBun(id);
+            return _bunRepository.GetBun<T>(id);
         }
 
-        public void Update(BunBase bun)
+        public void Update(Bun bun)
         {
             _bunRepository.Update(bun);
             _bunRepository.Save();
