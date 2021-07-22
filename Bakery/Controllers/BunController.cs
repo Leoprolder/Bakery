@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Bakery.Core.Data;
-using Bakery.Core.Model.Bun;
+﻿using Bakery.Core.Model.Bun;
 using Bakery.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,35 +14,40 @@ namespace Bakery.Controllers
             _bunService = bunService;
         }
 
-        [HttpGet]
-        public IEnumerable<Bun> Get()
+        [HttpGet("[action]")]
+        public JsonResult GetAll()
         {
-            return _bunService.GetAll();
+            return Json(_bunService.GetAll());
         }
 
-        [HttpGet("{id}")]
-        public T Get<T>(int id)
-            where T : Bun
+        [HttpGet("[action]")]
+        public JsonResult Get(int id)
         {
-            return _bunService.Get<T>(id);
+            return Json(_bunService.Get<Bun>(id));
         }
 
-        [HttpPost]
-        public void Create([FromBody]Bun bun)
+        [HttpPost("[action]")]
+        public ActionResult Create(Bun bun)
         {
             _bunService.Add(bun);
+
+            return Ok();
         }
 
-        [HttpPost]
-        public void Update([FromBody]Bun bun)
+        [HttpPost("[action]")]
+        public ActionResult Update([FromBody]Bun bun)
         {
             _bunService.Update(bun);
+
+            return Ok();
         }
 
-        [HttpGet("{id}")]
-        public void Delete(int id)
+        [HttpGet("[action]")]
+        public ActionResult Delete(int id)
         {
             _bunService.Delete(id);
+
+            return Ok();
         }
     }
 }
