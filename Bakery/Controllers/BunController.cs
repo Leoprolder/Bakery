@@ -1,4 +1,5 @@
 ﻿using Bakery.Core.Model.Bun;
+using Bakery.Core.Model.Enumerations;
 using Bakery.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,7 +28,7 @@ namespace Bakery.Controllers
         }
 
         [HttpPost("[action]")]
-        public ActionResult Create(Bun bun)
+        public ActionResult Create([FromBody]Bun bun)
         {
             _bunService.Add(bun);
 

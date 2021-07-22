@@ -8,7 +8,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let bun of buns">
-            <td>{{bun.bunType}}</td>
+            <td>{{mapBunTypeToHumanReadable(bun.bunType)}}</td>
             <td>{{bun.currentPrice}}</td>
             <td>{{bun.originalPrice}}</td>
             <td>WIP</td>

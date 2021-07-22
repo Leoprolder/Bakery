@@ -1,6 +1,7 @@
 import { Component, OnInit } from  '@angular/core'
 import { BunService } from '../services/bun.service'
 import { Bun } from '../models/bun'
+import { BunType } from '../models/bun-type'
 
 @Component({
     selector: 'bun-table',
@@ -17,5 +18,9 @@ export class BunTableComponent implements OnInit {
     
     ngOnInit() {
         this._bunService.GetAll().subscribe((data: Bun[]) => this.buns = data);
+    }
+
+    public mapBunTypeToHumanReadable(bunType: number): string {
+        return BunType[bunType];
     }
 }

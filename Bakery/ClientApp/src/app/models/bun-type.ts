@@ -1,7 +1,8 @@
 export enum BunType {
-    Baguette = 'Baguette',
-    Croissant = 'Croissant',
-    Loaf = 'Loaf',
-    Pretzel = 'Pretzel',
-    SourCream = 'SourCream'
+    Unknown = 0,
+    Baguette = 1,
+    Croissant = 2,
+    Loaf = 3,
+    Pretzel = 4,
+    SourCream = 5
 }

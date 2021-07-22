@@ -14,6 +14,7 @@ export class BunService {
         return this._httpClient.get(this._baseUrl + 'api/bun/getAll').pipe(
             map((data: any) => {
                 return data.map(bun => new Bun(
+                    bun.bunType,
                     bun.originalPrice,
                     bun.currentPrice,
                     bun.sellUntil,

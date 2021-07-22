@@ -8,7 +8,7 @@ namespace Bakery.Core.Model.Bun
     {
         public int Id { get; set; }
 
-        public BunType BunType { get; protected set; }
+        public BunType BunType { get; set; }
 
         public decimal OriginalPrice { get; set; }
 
