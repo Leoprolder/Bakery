@@ -1,4 +1,4 @@
-<table>
+<table class='table table-striped' aria-labelledby="tableLabel">
     <thead>
         <th>Kind of bun</th>
         <th>Current price</th>
@@ -8,7 +8,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let bun of buns">
-            <td>{{bun.kind}}</td>
+            <td>{{bun.bunType}}</td>
             <td>{{bun.currentPrice}}</td>
             <td>{{bun.originalPrice}}</td>
             <td>WIP</td>

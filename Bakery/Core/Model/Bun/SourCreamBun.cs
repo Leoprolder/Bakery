@@ -8,6 +8,7 @@ namespace Bakery.Core.Model.Bun
         public SourCreamBun(DateTime bakeTime, DateTime sellUntil, DateTime targetSaleTime, decimal price)
             : base(bakeTime, sellUntil, targetSaleTime, price)
         {
+            BunType = Enumerations.BunType.SourCream;
         }
 
         protected new decimal CalculateCurrentPrice()

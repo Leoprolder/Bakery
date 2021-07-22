@@ -1,4 +1,5 @@
 ﻿using Bakery.Core.Data;
+using Bakery.Core.Model.Enumerations;
 using System;
 
 namespace Bakery.Core.Model.Bun
@@ -6,6 +7,8 @@ namespace Bakery.Core.Model.Bun
     public abstract class BunBase
     {
         public int Id { get; set; }
+
+        public BunType BunType { get; protected set; }
 
         public decimal OriginalPrice { get; set; }
 

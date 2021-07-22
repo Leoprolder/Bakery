@@ -16,7 +16,6 @@ export class BunTableComponent implements OnInit {
     }
     
     ngOnInit() {
-        console.log("test")
         this._bunService.GetAll().subscribe((data: Bun[]) => this.buns = data);
     }
 }
