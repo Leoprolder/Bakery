@@ -1,4 +1,4 @@
-﻿namespace Bakery.Core.Data
+﻿namespace Bakery.Core.Model.Enumerations
 {
     public static class Constants
     {

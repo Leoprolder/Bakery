@@ -1,4 +1,4 @@
-﻿using Bakery.Core.Data;
+﻿using Bakery.Core.Model.Enumerations;
 using System;
 
 namespace Bakery.Core.Model.Bun
@@ -8,7 +8,7 @@ namespace Bakery.Core.Model.Bun
         public PretzelBun(DateTime bakeTime, DateTime sellUntil, DateTime targetSaleTime, decimal price)
             : base(bakeTime, sellUntil, targetSaleTime, price)
         {
-            BunType = Enumerations.BunType.Pretzel;
+            BunType = BunType.Pretzel;
         }
 
         protected new decimal CalculateCurrentPrice()
