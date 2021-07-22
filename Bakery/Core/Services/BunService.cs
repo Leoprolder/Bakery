@@ -1,16 +1,18 @@
-﻿using Bakery.Core.Model.Bun;
+﻿using Bakery.Core.Data;
+using Bakery.Core.Model.Bun;
 using System;
 using System.Collections.Generic;
+using System.Composition;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bakery.Core.Data
+namespace Bakery.Core.Services
 {
     public class BunService : IBunService
     {
-        private readonly IBunRepository<BunBase> _bunRepository;
+        private readonly IBunRepository _bunRepository;
 
-        public BunService(IBunRepository<BunBase> bunRepository)
+        public BunService(IBunRepository bunRepository)
         {
             _bunRepository = bunRepository;
         }

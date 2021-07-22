@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace Bakery.Core.Data
 {
-    public interface IBunRepository<T> : IDisposable
-        where T : BunBase
+    public interface IBunRepository : IDisposable
     {
-        IEnumerable<T> GetBuns();
+        IEnumerable<BunBase> GetBuns();
 
-        T GetBun(int id);
+        BunBase GetBun(int id);
 
-        void CreateBun(T bun);
+        void CreateBun(BunBase bun);
 
-        void Update(T bun);
+        void Update(BunBase bun);
 
         void Delete(int id);
 

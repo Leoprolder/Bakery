@@ -1,3 +1,5 @@
+using Bakery.Core.Data;
+using Bakery.Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +28,9 @@ namespace Bakery
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddTransient<IBunRepository, BunRepository>();
+            services.AddTransient<IBunService, BunService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

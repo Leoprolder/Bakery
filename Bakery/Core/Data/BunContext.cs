@@ -13,6 +13,11 @@ namespace Bakery.Core.Data
 
         public BunContext()
         {
+        }
+
+        public BunContext(DbContextOptions<BunContext> options)
+            : base(options)
+        {
             Database.EnsureCreated();
         }
 

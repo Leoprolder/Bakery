@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Bakery.Core.Data
+namespace Bakery.Core.Services
 {
     public interface IBunService
     {

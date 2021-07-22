@@ -1,12 +1,13 @@
 ﻿using Bakery.Core.Model.Bun;
 using System;
 using System.Collections.Generic;
+using System.Composition;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Bakery.Core.Data
 {
-    public class BunRepository : IBunRepository<BunBase>
+    public class BunRepository : IBunRepository
     {
         private BunContext _bunContext;
         private bool _disposed;
