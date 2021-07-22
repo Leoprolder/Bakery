@@ -22,6 +22,7 @@
     "@angular/platform-server": "8.2.12",
     "@angular/router": "8.2.12",
     "@nguniversal/module-map-ngfactory-loader": "8.1.1",
+    "angular-cli": "^1.0.0-beta.28.3",
     "aspnet-prerendering": "^3.0.1",
     "bootstrap": "^4.6.0",
     "core-js": "^3.8.3",

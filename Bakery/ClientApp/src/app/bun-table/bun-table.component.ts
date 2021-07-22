@@ -1,4 +1,4 @@
-import { Component, OnInit } from  '@angular/Core'
+import { Component, OnInit } from  '@angular/core'
 import { BunService } from '../services/bun.service'
 import { Bun } from '../models/bun'
 
@@ -16,6 +16,7 @@ export class BunTableComponent implements OnInit {
     }
     
     ngOnInit() {
+        console.log("test")
         this._bunService.GetAll().subscribe((data: Bun[]) => this.buns = data);
     }
 }
