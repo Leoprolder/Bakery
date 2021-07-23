@@ -1,3 +1,5 @@
+<bun-form></bun-form>
+
 <table class='table table-striped' aria-labelledby="tableLabel">
     <thead>
         <th>Kind of bun</th>
@@ -8,7 +10,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let bun of buns">
-            <td>{{mapBunTypeToHumanReadable(bun.bunType)}}</td>
+            <td>{{MapBunTypeToHumanReadable(bun.bunType)}}</td>
             <td>{{bun.currentPrice}}</td>
             <td>{{bun.originalPrice}}</td>
             <td>WIP</td>

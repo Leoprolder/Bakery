@@ -20,7 +20,7 @@ export class BunTableComponent implements OnInit {
         this._bunService.GetAll().subscribe((data: Bun[]) => this.buns = data);
     }
 
-    public mapBunTypeToHumanReadable(bunType: number): string {
+    public MapBunTypeToHumanReadable(bunType: number): string {
         return BunType[bunType];
     }
 }

@@ -1,0 +1,49 @@
+<form [formGroup]="bunForm" novalidate (ngSubmit)="Submit()">
+    <div class="form-group">
+        <label>Kind of bun</label>
+        <select class="form-control" name="bunType" formControlName="bunType">
+            <option *ngFor="let type of bunTypes">{{type}}</option>
+        </select>
+        
+        <div class="alert alert-danger"
+            *ngIf="bunForm.controls['bunType'].invalid && bunForm.controls['bunType'].touched">
+            Please select type of bun
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Price</label>
+        <input class="form-control" name="originalPrice" formControlName="originalPrice"/>
+
+        <div class="alert alert-danger"
+            *ngIf="bunForm.controls['originalPrice'].invalid && bunForm.controls['originalPrice'].touched">
+            Incorrect price value
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Sell until date</label>
+        <input class="form-control" name="sellUntil" formControlName="sellUntil" type="time"/>
+
+        <div class="alert alert-danger"
+            *ngIf="bunForm.controls['sellUntil'].invalid && bunForm.controls['sellUntil'].touched">
+            Incorrect date
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Target sale time</label>
+        <input class="form-control" name="targetSaleTime" formControlName="targetSaleTime" type="datetime"/>
+
+        <div class="alert alert-danger"
+            *ngIf="bunForm.controls['targetSaleTime'].invalid && bunForm.controls['targetSaleTime'].touched">
+            Incorrect date
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-default" [disabled]="bunForm.invalid">
+            Create
+        </button>
+    </div>
+</form>

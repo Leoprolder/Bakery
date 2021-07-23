@@ -23,4 +23,8 @@ export class BunService {
             })
         );
     }
+
+    public Create(bun: Bun): void {
+        this._httpClient.post(this._baseUrl + 'api/bun/create', bun);
+    }
 }
