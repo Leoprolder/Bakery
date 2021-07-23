@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, Output, EventEmitter } from '@angular/core'
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Bun } from '../models/bun';
 import { BunType } from '../models/bun-type';
@@ -12,6 +12,7 @@ import { CustomValidators } from '../validators/custom-validators';
 })
 
 export class BunFormComponent implements OnInit {
+    @Output() public onSubmit = new EventEmitter();
     public bunForm: FormGroup;
     public bunTypes: string[] = [];
     private _bunService: BunService;
@@ -24,12 +25,7 @@ export class BunFormComponent implements OnInit {
     }
 
     public ngOnInit() {
-        let enumLength = Object.keys(BunType).length / 2;
-        for(let i = 0; i < enumLength; i++) {
-            if (BunType.Unknown != i) {
-                this.bunTypes.push(BunType[i]);
-            }
-        }
+        this.bunTypes = this.GetBunTypes();
 
         this.bunForm = new FormGroup({
             "bunType": new FormControl("", Validators.required),
@@ -41,14 +37,34 @@ export class BunFormComponent implements OnInit {
 
     public Submit()
     {
+        let bunTypes = this.GetBunTypes(false);
         let bun: Bun = new Bun(
-            this.bunForm.controls["bunType"].value,
-            this.bunForm.controls["originalPrice"].value,
-            this.bunForm.controls["originalPrice"].value,
-            this.bunForm.controls["sellUntil"].value,
-            this.bunForm.controls["targetSaleTime"].value,
-            new Date())
+            Number(bunTypes.indexOf(this.bunForm.controls["bunType"].value)),
+            Number(this.bunForm.controls["originalPrice"].value),
+            Number(this.bunForm.controls["originalPrice"].value),
+            new Date(this.bunForm.controls["sellUntil"].value),
+            new Date(this.bunForm.controls["targetSaleTime"].value),
+            new Date());
 
-        this._bunService.Create(bun);
+        bun.id = 0;
+
+        this._bunService.Create(bun).subscribe(
+            (data: any) => this.onSubmit.emit(),
+                error => console.error(error)
+        );
+    }
+
+    private GetBunTypes(skipUnknown: boolean = true): string[]
+    {
+        let bunTypes: string[] = [];
+        let enumLength = Object.keys(BunType).length / 2;
+        
+        for(let i = 0; i < enumLength; i++) {
+            if (BunType.Unknown != i || !skipUnknown) {
+                bunTypes.push(BunType[i]);
+            }
+        }
+
+        return bunTypes;
     }
 }

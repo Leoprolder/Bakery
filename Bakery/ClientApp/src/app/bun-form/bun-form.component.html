@@ -1,7 +1,8 @@
 <form [formGroup]="bunForm" novalidate (ngSubmit)="Submit()">
     <div class="form-group">
         <label>Kind of bun</label>
-        <select class="form-control" name="bunType" formControlName="bunType">
+        <select class="form-control" name="bunType" formControlName="bunType" value="">
+            <option disabled selected value> Select an bun type </option>
             <option *ngFor="let type of bunTypes">{{type}}</option>
         </select>
         
