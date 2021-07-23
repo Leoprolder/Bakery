@@ -28,10 +28,10 @@ import { BunFormComponent } from './bun-form/bun-form.component';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'home', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'bun', component: BunTableComponent },
+      { path: '', component: BunTableComponent },
       { path: 'd', component: BunFormComponent}
     ])
   ],

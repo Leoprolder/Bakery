@@ -23,7 +23,7 @@
 
     <div class="form-group">
         <label>Sell until date</label>
-        <input class="form-control" name="sellUntil" formControlName="sellUntil" type="time"/>
+        <input class="form-control" name="sellUntil" formControlName="sellUntil" type="datetime"/>       
 
         <div class="alert alert-danger"
             *ngIf="bunForm.controls['sellUntil'].invalid && bunForm.controls['sellUntil'].touched">
