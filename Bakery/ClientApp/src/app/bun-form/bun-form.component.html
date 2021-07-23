@@ -24,7 +24,7 @@
 
     <div class="form-group">
         <label>Sell until date</label>
-        <input class="form-control" name="sellUntil" formControlName="sellUntil" type="datetime"/>       
+        <input class="form-control" name="sellUntil" formControlName="sellUntil" type="datetime" [placeholder]="defaultSellUntil"/>       
 
         <div class="alert alert-danger"
             *ngIf="bunForm.controls['sellUntil'].invalid && bunForm.controls['sellUntil'].touched">
@@ -34,7 +34,7 @@
 
     <div class="form-group">
         <label>Target sale time</label>
-        <input class="form-control" name="targetSaleTime" formControlName="targetSaleTime" type="datetime"/>
+        <input class="form-control" name="targetSaleTime" formControlName="targetSaleTime" type="datetime" [placeholder]="defaultTargetSellTime"/>
 
         <div class="alert alert-danger"
             *ngIf="bunForm.controls['targetSaleTime'].invalid && bunForm.controls['targetSaleTime'].touched">

@@ -15,6 +15,8 @@ export class BunFormComponent implements OnInit {
     @Output() public onSubmit = new EventEmitter();
     public bunForm: FormGroup;
     public bunTypes: string[] = [];
+    public defaultSellUntil: string = JSON.stringify(new Date(new Date().getTime() + 4 * 3600000)).replace('\"', '');
+    public defaultTargetSellTime: string = JSON.stringify(new Date(new Date().getTime() + 2 * 3600000)).replace('\"', '');
     private _bunService: BunService;
     private _customValidators: CustomValidators;
 
