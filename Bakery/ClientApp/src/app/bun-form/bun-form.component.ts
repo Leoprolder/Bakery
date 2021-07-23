@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { Bun } from '../models/bun';
 import { BunType } from '../models/bun-type';
 import { BunService } from '../services/bun.service';
-import { CustomValidators } from '../validators/validators';
+import { CustomValidators } from '../validators/custom-validators';
 
 @Component({
     selector: 'bun-form',
@@ -33,7 +33,7 @@ export class BunFormComponent implements OnInit {
 
         this.bunForm = new FormGroup({
             "bunType": new FormControl("", Validators.required),
-            "originalPrice": new FormControl("", [Validators.pattern("[0-9]{1,3}"), this._customValidators.PriceValidator]),
+            "originalPrice": new FormControl("", [Validators.required, this._customValidators.PriceValidator]),
             "sellUntil": new FormControl("", Validators.required),
             "targetSaleTime": new FormControl("", Validators.required)
         });
