@@ -5,22 +5,57 @@ namespace Bakery.Core.Model.Bun
 {
     public class PretzelBun : Bun
     {
+        public PretzelBun(Bun bun)
+            : this(bun.BakeTime, bun.SellUntil, bun.TargetSaleTime, bun.OriginalPrice)
+        {
+        }
+
         public PretzelBun(DateTime bakeTime, DateTime sellUntil, DateTime targetSaleTime, decimal price)
             : base(bakeTime, sellUntil, targetSaleTime, price)
         {
             BunType = BunType.Pretzel;
         }
 
-        protected new decimal CalculateCurrentPrice()
+        public override decimal CalculateNextPrice()
         {
+            if (NextPriceChangeTime == SellUntil)
+            {
+                return 0;
+            }
             if (DateTime.Now >= TargetSaleTime)
+            {
+                return CurrentPrice;
+            }
+            else
             {
                 return OriginalPrice / 2;
             }
+        }
 
-            int hoursElapsed = (DateTime.Now - SellUntil).Hours;
+        protected override decimal CalculateCurrentPrice()
+        {
+            if (NextPriceChangeTime == SellUntil)
+            {
+                return 0;
+            }
+            if (DateTime.Now >= TargetSaleTime)
+            {
+                return OriginalPrice / 2m;
+            }
 
-            return OriginalPrice - hoursElapsed * OriginalPrice * (Constants.ReductionPercentage / 100);
+            return OriginalPrice;
+        }
+
+        protected override DateTime GetPriceChangeTime()
+        {
+            if (DateTime.Now < TargetSaleTime)
+            {
+                return TargetSaleTime;
+            }
+            else
+            {
+                return SellUntil;
+            }
         }
     }
 }

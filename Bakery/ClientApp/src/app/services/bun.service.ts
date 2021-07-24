@@ -14,17 +14,24 @@ export class BunService {
         return this._httpClient.get(this._baseUrl + 'api/bun/getAll').pipe(
             map((data: any) => {
                 return data.map(bun => new Bun(
+                    bun.id,
                     bun.bunType,
                     bun.originalPrice,
                     bun.currentPrice,
                     bun.sellUntil,
                     bun.targetSaleTime,
-                    bun.bakeTime));
+                    bun.bakeTime,
+                    bun.nextPriceChangeTime,
+                    bun.nextPrice));
             })
         );
     }
 
     public Create(bun: Bun) {
         return this._httpClient.post(this._baseUrl + 'api/bun/create', JSON.parse(JSON.stringify(bun)));
+    }
+
+    public Delete(bun: Bun) {
+        return this._httpClient.post(this._baseUrl + 'api/bun/delete', JSON.parse(JSON.stringify(bun)));
     }
 }

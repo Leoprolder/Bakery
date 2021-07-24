@@ -19,15 +19,16 @@ namespace Bakery.Core.Data
 
         public void CreateBun(Bun bun)
         {
+            bun.Id = _bunContext.Buns.Count();
             _bunContext.Buns.Add(bun);
         }
 
-        public void Delete(int id)
+        public void Delete(Bun bun)
         {
-            var bun = _bunContext.Buns.Find(id);
-            if (bun != null)
+            var bunStored = _bunContext.Buns.Find(bun.Id);
+            if (bunStored != null)
             {
-                _bunContext.Buns.Remove(bun);
+                _bunContext.Buns.Remove(bunStored);
             }
         }
 

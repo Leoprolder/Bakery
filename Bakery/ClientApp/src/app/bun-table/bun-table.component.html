@@ -7,14 +7,16 @@
         <th>Original price</th>
         <th>Next price</th>
         <th>Time until price change</th>
+        <th></th>
     </thead>
     <tbody>
         <tr *ngFor="let bun of buns">
             <td>{{MapBunTypeToHumanReadable(bun.bunType)}}</td>
             <td>{{bun.currentPrice}}</td>
             <td>{{bun.originalPrice}}</td>
-            <td>WIP</td>
-            <td>WIP</td>
+            <td>{{bun.nextPrice}}</td>
+            <td>{{GetNextPriceChangeTimeLeft(bun.nextPriceChangeTime)}}</td>
+            <td><button class="btn btn-secondary" (click)="DeleteBun(bun)">x</button></td>
         </tr>
     </tbody>
 </table>

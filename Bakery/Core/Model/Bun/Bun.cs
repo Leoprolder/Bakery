@@ -8,6 +8,11 @@ namespace Bakery.Core.Model.Bun
         {
         }
 
+        public Bun(Bun bun)
+            : this(bun.BakeTime, bun.SellUntil, bun.TargetSaleTime, bun.OriginalPrice)
+        {
+        }
+
         public Bun(DateTime bakeTime, DateTime sellUntil, DateTime targetSaleTime, decimal price)
             : base(bakeTime, sellUntil, targetSaleTime, price)
         {

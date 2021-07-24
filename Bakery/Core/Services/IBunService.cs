@@ -12,7 +12,7 @@ namespace Bakery.Core.Services
         public T Get<T>(int id)
             where T : Bun;
 
-        public void Delete(int id);
+        public void Delete(Bun bun);
 
         public void Update(Bun bun);
     }

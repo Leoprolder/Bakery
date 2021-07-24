@@ -40,10 +40,9 @@ namespace Bakery.Core.Services
             _bunRepository.Save();
         }
 
-        public void Delete(int id)
+        public void Delete(Bun bun)
         {
-            _bunRepository.Delete(id);
-            _bunRepository.Save();
+            _bunRepository.Delete(bun);
         }
     }
 }

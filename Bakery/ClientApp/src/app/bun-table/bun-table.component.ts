@@ -24,7 +24,24 @@ export class BunTableComponent implements OnInit {
         return BunType[bunType];
     }
 
-    onChange(buns: any) {
+    public onChange(buns: any) {
         this._bunService.GetAll().subscribe((data: Bun[]) => this.buns = data);
+    }
+
+    public GetNextPriceChangeTimeLeft(date: string): string {
+        let timeLeftMs = new Date(date).getTime() - new Date().getTime();
+        let hours = Math.floor(timeLeftMs / (1000 * 60 * 60));
+        timeLeftMs -= hours * (1000 * 60 * 60);
+
+        let mins = Math.floor(timeLeftMs / (1000 * 60));
+
+        let output = hours > 0 
+            ? hours + " hours, " + mins + " minutes"
+            : mins + " minutes"
+        return output;
+    }
+
+    public DeleteBun(bun: Bun): void {
+        this._bunService.Delete(bun);
     }
 }

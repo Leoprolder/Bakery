@@ -5,17 +5,35 @@ namespace Bakery.Core.Model.Bun
 {
     public class SourCreamBun : Bun
     {
+        public SourCreamBun(Bun bun)
+            : this(bun.BakeTime, bun.SellUntil, bun.TargetSaleTime, bun.OriginalPrice)
+        {
+        }
+
         public SourCreamBun(DateTime bakeTime, DateTime sellUntil, DateTime targetSaleTime, decimal price)
             : base(bakeTime, sellUntil, targetSaleTime, price)
         {
             BunType = BunType.SourCream;
         }
 
-        protected new decimal CalculateCurrentPrice()
+        public override decimal CalculateNextPrice()
         {
-            int hoursElapsed = (DateTime.Now - SellUntil).Hours;
+            if (NextPriceChangeTime == SellUntil)
+            {
+                return 0;
+            }
+            return CurrentPrice - OriginalPrice * (Constants.ReductionPercentage / 100m) * 2m;
+        }
 
-            return OriginalPrice - hoursElapsed * OriginalPrice * (Constants.ReductionPercentage / 100) * 2;
+        protected override decimal CalculateCurrentPrice()
+        {
+            if (NextPriceChangeTime == SellUntil)
+            {
+                return 0;
+            }
+            return DateTime.Now >= TargetSaleTime
+                ? OriginalPrice - (DateTime.Now - TargetSaleTime).Hours * OriginalPrice * (Constants.ReductionPercentage / 100m) * 2m
+                : OriginalPrice;
         }
     }
 }

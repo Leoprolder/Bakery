@@ -8,4 +8,12 @@ export class CustomValidators {
 
         return null;
     }
+
+    public DateValidator(control: FormControl): {[x: string]: boolean}|null {
+        if (new Date(control.value) <= new Date()) {
+            return {"sellUntil": true, "targetSaleTime": true};
+        }
+
+        return null;
+    }
 }

@@ -32,8 +32,8 @@ export class BunFormComponent implements OnInit {
         this.bunForm = new FormGroup({
             "bunType": new FormControl("", Validators.required),
             "originalPrice": new FormControl("", [Validators.required, this._customValidators.PriceValidator]),
-            "sellUntil": new FormControl("", Validators.required),
-            "targetSaleTime": new FormControl("", Validators.required)
+            "sellUntil": new FormControl("", [Validators.required, this._customValidators.DateValidator]),
+            "targetSaleTime": new FormControl("", [Validators.required, this._customValidators.DateValidator])
         });
     }
 
@@ -41,14 +41,15 @@ export class BunFormComponent implements OnInit {
     {
         let bunTypes = this.GetBunTypes(false);
         let bun: Bun = new Bun(
+            0,
             Number(bunTypes.indexOf(this.bunForm.controls["bunType"].value)),
             Number(this.bunForm.controls["originalPrice"].value),
             Number(this.bunForm.controls["originalPrice"].value),
             new Date(this.bunForm.controls["sellUntil"].value),
             new Date(this.bunForm.controls["targetSaleTime"].value),
-            new Date());
-
-        bun.id = 0;
+            new Date(),
+            new Date(this.bunForm.controls["targetSaleTime"].value),
+            0);
 
         this._bunService.Create(bun).subscribe(
             (data: any) => this.onSubmit.emit(),

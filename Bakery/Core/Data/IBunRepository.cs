@@ -15,7 +15,7 @@ namespace Bakery.Core.Data
 
         void Update(Bun bun);
 
-        void Delete(int id);
+        void Delete(Bun bun);
 
         void Save();
     }
