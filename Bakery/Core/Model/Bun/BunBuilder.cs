@@ -1,26 +1,28 @@
-﻿namespace Bakery.Core.Model.Bun
+﻿using Bakery.Core.Model.Enumerations;
+
+namespace Bakery.Core.Model.Bun
 {
-    public static class BunConcretizer
+    public static class BunBuilder
     {
-        public static Bun Concretize(Bun bun)
+        public static Bun Build(Bun bun)
         {
             switch (bun.BunType)
             {
-                case Enumerations.BunType.Unknown:
+                case BunType.Unknown:
                     break;
-                case Enumerations.BunType.Baguette:
+                case BunType.Baguette:
                     bun = new BaguetteBun(bun);
                     break;
-                case Enumerations.BunType.Croissant:
+                case BunType.Croissant:
                     bun = new CroissantBun(bun);
                     break;
-                case Enumerations.BunType.Loaf:
+                case BunType.Loaf:
                     bun = new LoafBun(bun);
                     break;
-                case Enumerations.BunType.Pretzel:
+                case BunType.Pretzel:
                     bun = new PretzelBun(bun);
                     break;
-                case Enumerations.BunType.SourCream:
+                case BunType.SourCream:
                     bun = new SourCreamBun(bun);
                     break;
                 default:

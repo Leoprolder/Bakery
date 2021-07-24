@@ -26,7 +26,7 @@ namespace Bakery.Controllers
                     _bunService.Delete(bun);
                     continue;
                 }
-                buns.Add(BunConcretizer.Concretize(bun));
+                buns.Add(BunBuilder.Build(bun));
             }
 
             return Json(buns);

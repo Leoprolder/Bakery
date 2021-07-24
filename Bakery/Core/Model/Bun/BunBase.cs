@@ -1,5 +1,4 @@
-﻿using Bakery.Core.Data;
-using Bakery.Core.Model.Enumerations;
+﻿using Bakery.Core.Model.Enumerations;
 using System;
 using System.ComponentModel.DataAnnotations;
 
