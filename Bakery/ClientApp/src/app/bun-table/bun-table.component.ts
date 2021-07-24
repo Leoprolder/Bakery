@@ -42,6 +42,9 @@ export class BunTableComponent implements OnInit {
     }
 
     public DeleteBun(bun: Bun): void {
-        this._bunService.Delete(bun);
+        this._bunService.Delete(bun).subscribe(
+            (data: any) => this.onChange(data),
+                error => console.error(error)
+        );
     }
 }

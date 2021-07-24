@@ -2,7 +2,6 @@
 using Bakery.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Bakery.Controllers
 {
@@ -33,24 +32,10 @@ namespace Bakery.Controllers
             return Json(buns);
         }
 
-        [HttpGet("[action]")]
-        public JsonResult Get(int id)
-        {
-            return Json(_bunService.Get<Bun>(id));
-        }
-
         [HttpPost("[action]")]
         public ActionResult Create([FromBody]Bun bun)
         {
             _bunService.Add(bun);
-
-            return Ok();
-        }
-
-        [HttpPost("[action]")]
-        public ActionResult Update([FromBody]Bun bun)
-        {
-            _bunService.Update(bun);
 
             return Ok();
         }
@@ -61,33 +46,6 @@ namespace Bakery.Controllers
             _bunService.Delete(bun);
 
             return Ok();
-        }
-
-        [HttpGet("[action]")]
-        public JsonResult GetCurrentPrice(int id)
-        {
-            var bun = _bunService.Get<Bun>(id);
-            bun = BunConcretizer.Concretize(bun);
-
-            return Json(bun.CurrentPrice);
-        }
-
-        [HttpGet("[action]")]
-        public JsonResult GetNextPrice(int id)
-        {
-            var bun = _bunService.Get<Bun>(id);
-            bun = BunConcretizer.Concretize(bun);
-
-            return Json(bun.NextPrice);
-        }
-
-        [HttpGet("[action]")]
-        public JsonResult GetPriceChangeTime(int id)
-        {
-            var bun = _bunService.Get<Bun>(id);
-            bun = BunConcretizer.Concretize(bun);
-
-            return Json(bun.NextPriceChangeTime);
         }
     }
 }
