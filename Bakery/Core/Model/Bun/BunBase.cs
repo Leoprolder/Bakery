@@ -1,6 +1,7 @@
 ﻿using Bakery.Core.Data;
 using Bakery.Core.Model.Enumerations;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Bakery.Core.Model.Bun
 {
@@ -12,8 +13,10 @@ namespace Bakery.Core.Model.Bun
 
         public BunType BunType { get; set; }
 
+        [Range(0, 100)]
         public decimal OriginalPrice { get; set; }
 
+        [Range(0, 100)]
         public decimal CurrentPrice => CalculateCurrentPrice();
 
         public DateTime SellUntil { get; set; }
@@ -24,6 +27,7 @@ namespace Bakery.Core.Model.Bun
 
         public DateTime NextPriceChangeTime => GetPriceChangeTime();
 
+        [Range(0, 100)]
         public decimal NextPrice => CalculateNextPrice();
 
         public BunBase()
